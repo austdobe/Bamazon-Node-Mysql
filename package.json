@@ -1,0 +1,24 @@
+{
+  "name": "bamazon-node-mysql",
+  "version": "1.0.0",
+  "description": "This is a Node based E-commerce type app. Built with node.js and mysql, this will allow full interactivity within the console. When completed, there will be 3 views(Customer, Manager, Supervisor)",
+  "main": "bamazonConnection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austdobe/Bamazon-Node-Mysql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/austdobe/Bamazon-Node-Mysql/issues"
+  },
+  "homepage": "https://github.com/austdobe/Bamazon-Node-Mysql#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1",
+    "tables": "^2.2.2"
+  }
+}
