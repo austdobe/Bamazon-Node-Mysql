@@ -26,5 +26,7 @@ This project was created with:
 
 ## Demo
 
+![Bamazon-node Demo](bamazonDemo.gif)
+
 ## Contributors
 * Austin Dober | https://github.com/austdobe

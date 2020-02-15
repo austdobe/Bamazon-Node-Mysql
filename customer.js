@@ -102,7 +102,7 @@ function start(){
         })
     }
     function searchCheap(){
-        connection.query("select * from products where price < 10", function(err, res){
+        connection.query("select * from products where price < 20", function(err, res){
             for(var i = 0; i<res.length; i++){
                 
                 console.log("\nItem id: " + res[i].item_id + " | Product Name: " +res[i].product_name+ " | Department Name: "+ res[i].department_name + " | Price: " + res[i].price + " | Quantity: " + res[i].quantity)
@@ -137,7 +137,7 @@ function start(){
                 var query = "update products set quantity = quantity - ? where item_id=?;";
                 connection.query(query, [{quantity:amount}, answer], function(err, res){
                     console.log("Purchase Successful");
-                    start()
+                    connection.end()
                 })
             })
         })  
