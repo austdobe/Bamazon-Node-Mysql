@@ -12,3 +12,15 @@ connection.connect(function(err){
     if(err)throw err;
     console.log("connected as id "+connection.threadId + "\n")
 })
+
+function start(){
+    inquirer.prompt({
+        name: "action", 
+        type: "rawlist",
+        message: "What would you like to update?",
+        choices: [
+            "Add product",
+            "Update quantity"
+        ]
+    })
+}

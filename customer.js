@@ -19,7 +19,7 @@ function start(){
     inquirer.prompt({
         name: "action",
         type: "rawlist",
-        message: "What would you like to do?",
+        message: "Good morning, How may we assist you?",
         choices: [
             "Search by department",
             "Search all products",
