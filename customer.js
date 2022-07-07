@@ -1,5 +1,5 @@
-var mysql = require("mysql");
-var inquirer = require("inquirer");
+import mysql from 'mysql'
+import inquirer from "inquirer";
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -7,11 +7,12 @@ var connection = mysql.createConnection({
     password: "123456789",
     database: "bamazonDB"
 });
+
 var cart = [];
 
 connection.connect(function(err){
     if(err)throw err;
-    console.log("connected as id "+connection.threadId + "\n")
+    console.log("connected as id "+ connection.threadId + "\n")
     start()
 })
 
@@ -39,7 +40,6 @@ function start(){
         
         }).then(function(answer){
             if(answer.confirm ==="Yes"){
-                // console.log(choice)
                 switch (choice){
                     case "Search by department":
                         searchDep();
@@ -61,7 +61,6 @@ function start(){
     })
 }
     function searchDep(){
-        // console.log("Search department")
         inquirer.prompt({
             name: "department",
             type: "rawlist",
@@ -83,14 +82,12 @@ function start(){
                     
             }
             buy()
-            // connection.end()
         })
         
 
         })
     }
     function searchAll(){
-        // console.log("Search all")
         connection.query("select * from products", function(err, res){
             for(var i = 0; i<res.length; i++){
                 
@@ -98,7 +95,6 @@ function start(){
                     
             }
             buy()
-            // connection.end()
         })
     }
     function searchCheap(){
@@ -109,11 +105,12 @@ function start(){
                     
             }
             buy()
-            // connection.end()
         })
     }
     
     function buy(){
+        let itemId = ''
+        let quantity = ''
         inquirer.prompt([
             {
             name: "buy",
@@ -122,9 +119,9 @@ function start(){
             
             },
         ]).then(function(answer){
-            var answer = answer.buy
+            itemId = answer.buy
             
-            if (answer === "n"){
+            if (itemId === "n"){
                 start();
             }
             inquirer.prompt(
@@ -133,10 +130,9 @@ function start(){
                 type: "Number",
                 message: "How many would you like?"
             }).then(function(answer){
-                var amount = answer.quantity
-                var query = "update products set quantity = quantity - ? where item_id=?;";
-                connection.query(query, [{quantity:amount}, answer], function(err, res){
-                    console.log("Purchase Successful");
+                quantity = answer.quantity
+                var query = "update products set quantity = quantity - ? where item_id = ?;";
+                connection.query(query, [quantity, itemId], function(err, res){
                     connection.end()
                 })
             })
